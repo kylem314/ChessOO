@@ -1,0 +1,36 @@
+Chess Rules
+
+General:
+There are 2 sides, Black and White.  Both alternate taking turns by moving a piece, starting with white.  The objective of the game is to checkmate the enemy king, meaning that they are being attacked by one of your pieces and they cannot escape.
+
+Pieces:
+
+Pawn - ♟
+Pawns can move forward, towards the enemy backline.  They typically move one space at a time, though they can move forward 2 spaces on their first turn. Pawns can capture other pieces diagonally - forward one and to either side.  If they reach the final rank on the other side of the board, they can promote to another piece; Rook, Bishop, Knight, or Queen.
+
+Rook - ♜
+Rooks can move infinite spaces horizontally or vertically, as long as there are no other pieces in the way.
+
+Knight - ♞
+Knights move 2 spaces in 1 direction, and 1 space perpendicular to the first direction - making an L shape.  They can 'jump' over other pieces.
+
+Bishop - ♝
+Bishops can move infinite spaces diagonally, as long as there are no other pieces in the way.
+
+Queen - ♛
+Queens can move infinite spaces diagonally, horizontally, or vertically, as long as there are no other pieces in the way.
+
+King - ♚
+Kings can move a single space in any direction.
+
+Special moves:
+Castling -
+Provided these conditions are met, the king will move 2 spaces towards either rook, and the rook will move past to the other side of the king.
+1. The king and rook being used have not been moved.
+2. The king is not in check, moving through check, or moving into check
+
+En Passant -
+A pawn can capture an enemy pawn to the side, provided these conditions are met
+1. The opposing pawn is directly to the left or right of the attacking pawn
+2. The opposing pawn had moved forward 2 spaces the turn before
+The attacking pawn will then capture, moving forward and toward the enemy pawn
