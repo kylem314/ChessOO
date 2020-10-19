@@ -1,7 +1,7 @@
 import time
 import os
 from random import randrange
-
+#adding a comment to test editing on INteliJ
 def menuAni():
     #terminal print commands
   ANSI_CLEAR_SCREEN = u"\u001B[2J"
