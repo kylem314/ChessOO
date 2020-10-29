@@ -12,7 +12,7 @@ import os
 
 """
 Kyle's password is kyleiscool
-Shekar's password is thegoat
+Shekar's password is thegoa
 David's password is penspinner
 colin's password is iamcolin
 devam's password is mrscrummaster
@@ -53,7 +53,7 @@ while(username_input not in username_credentials):
         y=False
         if(password_input=="kyleiscool")and(username_input=="Kyle"):
           x=True
-        if(password_input=="thegoat")and(username_input=="Shekar"):
+        if(password_input=="thegoa")and(username_input=="Shekar"):
           x=True
         if(password_input=="GUEST")and(username_input=="GUEST"):
           x=True
