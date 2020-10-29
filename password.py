@@ -13,7 +13,7 @@ import os
 
 """
 Kyle's password is kyleiscool
-Shekar's password is thegoat
+Shekar's password is thegoa
 David's password is penspinner
 Colin's password is iamcolin
 Devam's password is mrscrummaster
@@ -48,7 +48,7 @@ def password_code():
         password_input=input("")
         if(password_input=="kyleiscool")and(username_input=="Kyle"):
           x=True
-        if(password_input=="thegoat")and(username_input=="Shekar"):
+        if(password_input=="thegoa")and(username_input=="Shekar"):
           x=True
         if(password_input=="GUEST")and(username_input=="GUEST"):
           x=True
