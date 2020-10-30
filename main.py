@@ -5,14 +5,14 @@ import asyncio
 import math
 import uuid
 from animation import *
+from movepiece import *
+from piecedefinitions import *
+from zwhitepersp import *
+from zblackpersp import *
 
 # Function Definitions
 exec(open("password.py").read())
 menuAni()
-exec(open("movepiece.py").read())
-exec(open("piecedefinitions.py").read())
-exec(open("zwhitepersp.py").read())
-exec(open("zblackpersp.py").read())
 def main():
   exec(open("main.py").read())
 def replaygame():

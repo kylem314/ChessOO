@@ -22,6 +22,10 @@ two notations:
 
 """
 
+from piecedefinitions import *
+from zwhitepersp import *
+from zblackpersp import *
+
 
 def movepiece(board, storeboard, whitemove, whitecolor, blackcolor):
     usermove = input(
@@ -56,7 +60,7 @@ def len2(usermove, board, storeboard, whitemove, whitecolor, blackcolor):
             else:
                 whitemove = "W"
                 whitepersp(whitecolor, blackcolor, board)
-            storeboard = storeboardset(board, storeboard, whitemove, setting)
+            storeboard = storeboardset(board, storeboard, whitemove, 1)
         else:
             print("Please enter a valid move.")
     except Exception as e:
@@ -67,7 +71,8 @@ def len2(usermove, board, storeboard, whitemove, whitecolor, blackcolor):
 
 def len3(usermove, board, storeboard, whitemove, whitecolor, blackcolor):
     if usermove == "0-0":
-        if str(whitemove + "R2n") in storeboard["f1"] and board["e1"] == "WK1n" or str(whitemove + "R2n") in storeboard["f8"] and board["e8"] == "BK1n":
+        if str(whitemove + "R2n") in storeboard["f1"] and board["e1"] == "WK1n" or str(whitemove + "R2n") in storeboard[
+            "f8"] and board["e8"] == "BK1n":
             pass
     try:
         piece = ""
@@ -95,7 +100,7 @@ def len3(usermove, board, storeboard, whitemove, whitecolor, blackcolor):
             else:
                 whitemove = "W"
                 whitepersp(whitecolor, blackcolor, board)
-            storeboard = storeboardset(board, storeboard, whitemove, setting)
+            storeboard = storeboardset(board, storeboard, whitemove, 1)
         else:
             print("Please enter a valid move.")
     except Exception as e:
@@ -132,7 +137,7 @@ def len4(usermove, board, storeboard, whitemove, whitecolor, blackcolor):
                 else:
                     whitemove = "W"
                     whitepersp(whitecolor, blackcolor, board)
-                storeboard = storeboardset(board, storeboard, whitemove, setting)
+                storeboard = storeboardset(board, storeboard, whitemove, 1)
                 print("hi")
         except Exception as e:
             print("Please enter a valid move.")
@@ -154,7 +159,7 @@ def len5(usermove, board, storeboard, whitemove, whitecolor, blackcolor):
                 else:
                     whitemove = "W"
                     whitepersp(whitecolor, blackcolor, board)
-                storeboard = storeboardset(board, storeboard, whitemove, setting)
+                storeboard = storeboardset(board, storeboard, whitemove, 1)
             else:
                 print("Please enter a valid move.")
     except Exception as e:
@@ -187,16 +192,18 @@ def storeboardset(board, storeboard, whitemove, setting):
     for i in board:
         piece = board[i][0:2]
         if piece != '  ':
-            if storeboard == piecefunc[piece](board, storeboard, board[i], i[0], int(i[1])) and piece[0].upper() == whitemove:
+            if storeboard == piecefunc[piece](board, storeboard, board[i], i[0], int(i[1])) and piece[
+                0].upper() == whitemove:
                 stalemate = False
             else:
                 storeboard = piecefunc[piece](board, storeboard, board[i], i[0], int(i[1]))
             if piece == "WK":
-                wking = i
+                wkingpos = i
             elif piece == "BK":
-                bking = i
-    check1 = check(board, storeboard, wking, bking, whitemove)
-    storeboard = check(board, storeboard, wking, bking, whitemove)
+                bkingpos = i
+    check1 = check(board, storeboard, wkingpos, bkingpos, whitemove)
+    storeboard = check(board, storeboard, wkingpos, bkingpos, whitemove)
+    checkmate = False
     settings = ["?", storeboard, check1, checkmate, stalemate]
     return settings[setting]
 
@@ -211,19 +218,19 @@ def check(board, storeboard, wking, bking, whitemove):
         "a3": [], "b3": [], "c3": [], "d3": [], "e3": [], "f3": [], "g3": [], "h3": [],
         "a2": [], "b2": [], "c2": [], "d2": [], "e2": [], "f2": [], "g2": [], "h2": [],
         "a1": [], "b1": [], "c1": [], "d1": [], "e1": [], "f1": [], "g1": [], "h1": []}
-    kingpos = str(whitemove.lower() + king)
+    kingpos = str(whitemove.lower() + "king")
     king = board[kingpos]
     if len(storeboard[kingpos]) > 0:
         check = True
         checkmate = True
-        attacking = storeboard[wking[0]]
+        attacking = storeboard[king[0]]
         try:
-            attacking1 = storeboard[wking[1]]
+            attacking1 = storeboard[king[1]]
             for i in storeboard.values():
                 if king in i:
                     for k in i:
                         if k[0].upper() != whitemove:
-                            print
+                            raise Exception("no")
                     storeboard1[i].append(king)
                     checkmate = False
         except:
