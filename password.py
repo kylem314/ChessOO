@@ -13,7 +13,7 @@ import os
 
 """
 Kyle's password is kyleiscool
-Shekar's password is thegoa
+Shekar's password is thegoat
 David's password is penspinner
 Colin's password is iamcolin
 Devam's password is mrscrummaster
@@ -48,7 +48,7 @@ def password_code():
         password_input=input("")
         if(password_input=="kyleiscool")and(username_input=="Kyle"):
           x=True
-        if(password_input=="thegoa")and(username_input=="Shekar"):
+        if(password_input=="thegoat")and(username_input=="Shekar"):
           x=True
         if(password_input=="GUEST")and(username_input=="GUEST"):
           x=True
@@ -96,25 +96,27 @@ def password_code():
   print(bcolors.OKGREEN+bcolors.BOLD+"PLAYER "+str(OOGABOOGA)+" SUCCESSFULLY LOGGED IN"+bcolors.ENDC)
   if(password_input=="GUEST"):
     print(bcolors.OKGREEN+"You are using temporary guest account"+bcolors.ENDC)
-
     w=True
   if(w==False):
     print(bcolors.OKGREEN+"Hello "+username_input+bcolors.ENDC)
 
 account_state=True
+
+""""
 def neworexisting():
-  print("login with existing account or new account"+"\nenter New for new account and Existing for existing account")
+  print("login with existing account or new account"+"\nenter NEW for new account and EXISTING for existing account")
   first_input=input("")
-  if(first_input.title() == "New"):
+  if(first_input == "NEW"):
     account_state = False
-  elif(first_input.title() == "Existing"):
+  elif(first_input=="EXISTING"):
     account_state = True
   else:
     neworexisting()
   return(account_state)
-#account_state = neworexisting()
+account_state = neworexisting()
+"""
 
-"""if(account_state==True):
+if(account_state==True):
   password_code()
   OOGABOOGA=2
   password_code()
@@ -123,5 +125,4 @@ def neworexisting():
   os.system("clear")
 if(account_state==False):
   print("hi")
-  time.sleep(5)"""
-# need to make it ask for a new or existing account for p2
+  time.sleep(5)
