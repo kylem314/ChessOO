@@ -15,8 +15,8 @@ import os
 Kyle's password is kyleiscool
 Shekar's password is thegoat
 David's password is penspinner
-Colin's password is iamcolin
-Devam's password is mrscrummaster
+Colin's password is java
+Devam's password is scrummaster
 GUEST's password is GUEST
 """
 
@@ -27,7 +27,7 @@ GUEST's password is GUEST
 """
 
 def password_code():
-  username_credentials=["Kyle", "Shekar", "GUEST", "Devam"]
+  username_credentials=["Kyle", "Shekar", "GUEST", "Devam", "Colin", "David"]
   def username_give():
     print("\nFirst authorized user is player 1 (white)"+"\nSecond authorized user is player 2 (black)"+"\nPlease enter username: "+"\nType GUEST to use guest account")
   def password_give():
@@ -52,7 +52,11 @@ def password_code():
           x=True
         if(password_input=="GUEST")and(username_input=="GUEST"):
           x=True
-        if(password_input=="mrscrummaster")and(username_input=="Devam"):
+        if(password_input=="scrummaster")and(username_input=="Devam"):
+          x=True
+        if(password_input=="java")and(username_input=="Colin"):
+          x=True
+        if(password_input=="penspinner")and(username_input=="David"):
           x=True
         y=False
         while(x==False):
@@ -66,7 +70,11 @@ def password_code():
             x=True
           if(password_input=="GUEST")and(username_input=="GUEST"):
             x=True
-          if(password_input=="mrscrummaster")and(username_input=="Devam"):
+          if(password_input=="scrummaster")and(username_input=="Devam"):
+            x=True
+          if(password_input=="java")and(username_input=="Colin"):
+            x=True
+          if(password_input=="penspinner")and(username_input=="David"):
             x=True
   if(y==True):
     password_give()
@@ -78,7 +86,11 @@ def password_code():
       x=True
     if(password_input=="GUEST")and(username_input=="GUEST"):
       x=True
-    if(password_input=="mrscrummaster")and(username_input=="Devam"):
+    if(password_input=="scrummaster")and(username_input=="Devam"):
+      x=True
+    if(password_input=="java")and(username_input=="Colin"):
+      x=True
+    if(password_input=="penspinner")and(username_input=="David"):
       x=True
     while(x==False):
       print(bcolors.FAIL+bcolors.BOLD+"invalid"+bcolors.ENDC)
@@ -90,7 +102,11 @@ def password_code():
         x=True
       if(password_input=="GUEST")and(username_input=="GUEST"):
         x=True
-      if(password_input=="mrscrummaster")and(username_input=="Devam"):
+      if(password_input=="scrummaster")and(username_input=="Devam"):
+        x=True
+      if(password_input=="java")and(username_input=="Colin"):
+        x=True
+      if(password_input=="penspinner")and(username_input=="David"):
         x=True
 
   print(bcolors.OKGREEN+bcolors.BOLD+"PLAYER "+str(OOGABOOGA)+" SUCCESSFULLY LOGGED IN"+bcolors.ENDC)
