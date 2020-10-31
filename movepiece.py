@@ -196,39 +196,57 @@ def storeboardset(board, storeboard, whitemove, setting):
             storeboard = piecefunc[piece](board, storeboard, board[i], i[0], int(i[1]))
             if storeboard == storeboard1 and piece[0].upper() == whitemove:
                 stalemate = False
-            if piece == "WK":
-                wkingpos = i
-            elif piece == "BK":
-                bkingpos = i
-    check1 = check(board, storeboard, wkingpos, bkingpos, whitemove)
-    storeboard = check(board, storeboard, wkingpos, bkingpos, whitemove)
+            if piece[0:3] == whitemove.upper() + "K1":
+                kingpos = i
+    if len(storeboard[kingpos]) > 0:
+        storeboard = check(board, storeboard, kingpos, whitemove)
     checkmate = False
-    settings = ["?", storeboard, check1, checkmate, stalemate]
+    settings = ["?", storeboard, checkmate, stalemate]
     print(storeboard)
     yes = aidictionarything(storeboard)
     print(yes)
     return storeboard
 
 
-def check(board, storeboard, wking, bking, whitemove):
-    kingpos = str(whitemove.lower() + "king")
+def check(board, storeboard, kingpos, whitemove):
+
+    print(kingpos)
     king = board[kingpos]
-    if len(storeboard[kingpos]) > 0:
-        check = True
-        checkmate = True
-        attacking = storeboard[wking[0]]
-        try:
-            attacking1 = storeboard[wking[1]]
-            for i in storeboard.values():
-                if king in i:
-                    for k in i:
-                        if k[0].upper() != whitemove:
-                            print
-                    storeboard[i].append(king)
-                    checkmate = False
-        except:
-            doublecheck = False
-    return storeboard
+    storeboard1 = {
+        "a8": [], "b8": [], "c8": [], "d8": [], "e8": [], "f8": [], "g8": [], "h8": [],
+        "a7": [], "b7": [], "c7": [], "d7": [], "e7": [], "f7": [], "g7": [], "h7": [],
+        "a6": [], "b6": [], "c6": [], "d6": [], "e6": [], "f6": [], "g6": [], "h6": [],
+        "a5": [], "b5": [], "c5": [], "d5": [], "e5": [], "f5": [], "g5": [], "h5": [],
+        "a4": [], "b4": [], "c4": [], "d4": [], "e4": [], "f4": [], "g4": [], "h4": [],
+        "a3": [], "b3": [], "c3": [], "d3": [], "e3": [], "f3": [], "g3": [], "h3": [],
+        "a2": [], "b2": [], "c2": [], "d2": [], "e2": [], "f2": [], "g2": [], "h2": [],
+        "a1": [], "b1": [], "c1": [], "d1": [], "e1": [], "f1": [], "g1": [], "h1": []}
+    check = True
+    checkmate = True
+    attacking = storeboard[kingpos[0]]
+    try:
+        attacking1 = storeboard[kingpos[1]]
+    except:
+        doublecheck = False
+
+    for i in storeboard.values():
+        if king in i:
+            try:
+                for k in i:
+                    if k[0].upper() == whitemove:
+                        raise Exception("exception")
+                storeboard1[i].append(king)
+            except:
+                pass
+            checkmate = False
+    if not doublecheck:
+        for key,value in storeboard.items():
+            if value == attacking:
+                attackingpos = key
+                break
+
+
+    return storeboard1
 
 
 def aidictionarything(storeboard):

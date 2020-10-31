@@ -126,7 +126,7 @@ def bknight(board, storeboard, piece, file, rank):
 
 
 def wrook(board, storeboard, piece, file, rank):
-    # mccable cyclomatic complexity, please have mercy on my code
+    # mccabe cyclomatic complexity, please have mercy on my code
     x = file
     y = int(rank)
     up = 8 - y
@@ -181,7 +181,7 @@ def wrook(board, storeboard, piece, file, rank):
 
 
 def brook(board, storeboard, piece, file, rank):
-    # mccable cyclomatic complexity, please have mercy on my code
+    # mccabe cyclomatic complexity, please have mercy on my code
     x = file
     y = int(rank)
     up = 8 - y
@@ -236,7 +236,7 @@ def brook(board, storeboard, piece, file, rank):
 
 
 def wbishop(board, storeboard, piece, file, rank):
-    # mccable cyclomatic complexity, please have mercy on my code
+    # mccabe cyclomatic complexity, please have mercy on my code
     x = file
     y = int(rank)
     up = 8 - y
@@ -315,7 +315,7 @@ def wbishop(board, storeboard, piece, file, rank):
 
 
 def bbishop(board, storeboard, piece, file, rank):
-    # mccable cyclomatic complexity, please have mercy on my code
+    # mccabe cyclomatic complexity, please have mercy on my code
     x = file
     y = int(rank)
     up = 8 - y
@@ -394,7 +394,7 @@ def bbishop(board, storeboard, piece, file, rank):
 
 
 def wqueen(board, storeboard, piece, file, rank):
-    # mccable cyclomatic complexity, please have mercy on my code
+    # mccabe cyclomatic complexity, please have mercy on my code
     x = file
     y = int(rank)
     up = 8 - y
@@ -517,7 +517,7 @@ def wqueen(board, storeboard, piece, file, rank):
 
 
 def bqueen(board, storeboard, piece, file, rank):
-    # mccable cyclomatic complexity, please have mercy on my code
+    # mccabe cyclomatic complexity, please have mercy on my code
     x = file
     y = int(rank)
     up = 8 - y
