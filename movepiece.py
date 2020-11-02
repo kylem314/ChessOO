@@ -25,6 +25,7 @@ two notations:
 from piecedefinitions import *
 from zwhitepersp import *
 from zblackpersp import *
+from checkfunctions import *
 
 
 def movepiece(board, storeboard, whitemove, whitecolor, blackcolor):
@@ -240,10 +241,12 @@ def check(board, storeboard, kingpos, whitemove):
                 pass
             checkmate = False
     if not doublecheck:
-        for key,value in storeboard.items():
+        for key, value in board.items():
             if value == attacking:
                 attackingpos = key
                 break
+        checkfunctions = {"N": Ncheck, "B": Bcheck, "R": Rcheck, "Q": Qcheck, "p": whitemove.lower() + check}
+        checkfunctions[attacking[0]](kingpos, attackingpos, storeboard, storeboard1)
 
 
     return storeboard1
