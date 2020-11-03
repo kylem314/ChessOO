@@ -8,12 +8,12 @@ def wpawn(board, storeboard, piece, file, rank):
     try:
         if board[chr(ord(file) + 1) + str(rank + 1)][0].lower() == 'b':
             storeboard[chr(ord(file) + 1) + str(rank + 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) - 1) + str(rank + 1)][0].lower() == 'b':
             storeboard[chr(ord(file) - 1) + str(rank + 1)].append(piece)
-    except:
+    except Exception:
         pass
     return storeboard
 
@@ -27,12 +27,12 @@ def bpawn(board, storeboard, piece, file, rank):
     try:
         if board[chr(ord(file) + 1) + str(rank - 1)][0].lower() == 'w':
             storeboard[chr(ord(file) + 1) + str(rank - 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) - 1) + str(rank - 1)][0].lower() == 'w':
             storeboard[chr(ord(file) - 1) + str(rank - 1)].append(piece)
-    except:
+    except Exception:
         pass
     return storeboard
 
@@ -41,42 +41,42 @@ def wknight(board, storeboard, piece, file, rank):
     try:
         if board[chr(ord(file) + 1) + str(rank + 2)][0].lower() != 'w':
             storeboard[chr(ord(file) + 1) + str(rank + 2)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) - 1) + str(rank + 2)][0].lower() != 'w':
             storeboard[chr(ord(file) - 1) + str(rank + 2)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) + 1) + str(rank - 2)][0].lower() != 'w':
             storeboard[chr(ord(file) + 1) + str(rank - 2)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) - 1) + str(rank - 2)][0].lower() != 'w':
             storeboard[chr(ord(file) - 1) + str(rank - 2)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) + 2) + str(rank + 1)][0].lower() != 'w':
             storeboard[chr(ord(file) + 2) + str(rank + 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) - 2) + str(rank + 1)][0].lower() != 'w':
             storeboard[chr(ord(file) - 2) + str(rank + 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) + 2) + str(rank - 1)][0].lower() != 'w':
             storeboard[chr(ord(file) + 2) + str(rank - 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) - 2) + str(rank - 1)][0].lower() != 'w':
             storeboard[chr(ord(file) - 2) + str(rank - 1)].append(piece)
-    except:
+    except Exception:
         pass
     return storeboard
 
@@ -85,42 +85,42 @@ def bknight(board, storeboard, piece, file, rank):
     try:
         if board[chr(ord(file) + 1) + str(rank + 2)][0].lower() != 'b':
             storeboard[chr(ord(file) + 1) + str(rank + 2)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) - 1) + str(rank + 2)][0].lower() != 'b':
             storeboard[chr(ord(file) - 1) + str(rank + 2)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) + 1) + str(rank - 2)][0].lower() != 'b':
             storeboard[chr(ord(file) + 1) + str(rank - 2)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) - 1) + str(rank - 2)][0].lower() != 'b':
             storeboard[chr(ord(file) - 1) + str(rank - 2)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) + 2) + str(rank + 1)][0].lower() != 'b':
             storeboard[chr(ord(file) + 2) + str(rank + 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) - 2) + str(rank + 1)][0].lower() != 'b':
             storeboard[chr(ord(file) - 2) + str(rank + 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) + 2) + str(rank - 1)][0].lower() != 'b':
             storeboard[chr(ord(file) + 2) + str(rank - 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) - 2) + str(rank - 1)][0].lower() != 'b':
             storeboard[chr(ord(file) - 2) + str(rank - 1)].append(piece)
-    except:
+    except Exception:
         pass
     return storeboard
 
@@ -643,42 +643,42 @@ def wking(board, storeboard, piece, file, rank):
     try:
         if board[file + str(rank + 1)][0].lower() != 'w':
             storeboard[file + str(rank + 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[file + str(rank - 1)][0].lower() != 'w':
             storeboard[file + str(rank - 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) + 1) + str(rank)][0].lower() != 'w':
             storeboard[chr(ord(file) + 1) + str(rank)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) - 1) + str(rank)][0].lower() != 'w':
             storeboard[chr(ord(file) - 1) + str(rank)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) + 1) + str(rank + 1)][0].lower() != 'w':
             storeboard[chr(ord(file) + 1) + str(rank + 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) - 1) + str(rank + 1)][0].lower() != 'w':
             storeboard[chr(ord(file) - 1) + str(rank + 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) + 1) + str(rank - 1)][0].lower() != 'w':
             storeboard[chr(ord(file) + 1) + str(rank - 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) - 1) + str(rank - 1)][0].lower() != 'w':
             storeboard[chr(ord(file) - 1) + str(rank - 1)].append(piece)
-    except:
+    except Exception:
         pass
     return storeboard
 
@@ -687,41 +687,41 @@ def bking(board, storeboard, piece, file, rank):
     try:
         if board[file + str(rank + 1)][0].lower() != 'b':
             storeboard[file + str(rank + 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[file + str(rank - 1)][0].lower() != 'b':
             storeboard[file + str(rank - 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) + 1) + str(rank)][0].lower() != 'b':
             storeboard[chr(ord(file) + 1) + str(rank)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) - 1) + str(rank)][0].lower() != 'b':
             storeboard[chr(ord(file) - 1) + str(rank)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) + 1) + str(rank + 1)][0].lower() != 'b':
             storeboard[chr(ord(file) + 1) + str(rank + 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) - 1) + str(rank + 1)][0].lower() != 'b':
             storeboard[chr(ord(file) - 1) + str(rank + 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) + 1) + str(rank - 1)][0].lower() != 'b':
             storeboard[chr(ord(file) + 1) + str(rank - 1)].append(piece)
-    except:
+    except Exception:
         pass
     try:
         if board[chr(ord(file) - 1) + str(rank - 1)][0].lower() != 'b':
             storeboard[chr(ord(file) - 1) + str(rank - 1)].append(piece)
-    except:
+    except Exception:
         pass
     return storeboard

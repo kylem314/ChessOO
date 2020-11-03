@@ -1,5 +1,7 @@
+def wpcheck(kingpos, attackingpos, storeboard, storeboard1, whitemove, king):
+    if king in storeboard[attackingpos]:
+        pass
 
-def wpcheck(kingpos, attackingpos, storeboard, storeboard1,whitemove,king):
     for i in storeboard.values():
         if king in i:
             try:
@@ -7,27 +9,27 @@ def wpcheck(kingpos, attackingpos, storeboard, storeboard1,whitemove,king):
                     if k[0].upper() == whitemove:
                         raise Exception("exception")
                 storeboard1[i].append(king)
-            except:
+            except Exception:
                 pass
             checkmate = False
     print("white pawn")
 
 
-def bpcheck(kingpos, attackingpos, storeboard, storeboard1,whitemove,king):
+def bpcheck(kingpos, attackingpos, storeboard, storeboard1, whitemove, king):
     print("black pawn")
 
 
-def Bcheck(kingpos, attackingpos, storeboard, storeboard1,whitemove,king):
+def Bcheck(kingpos, attackingpos, storeboard, storeboard1, whitemove, king):
     print("bishop")
 
 
-def Ncheck(kingpos, attackingpos, storeboard, storeboard1,whitemove,king):
+def Ncheck(kingpos, attackingpos, storeboard, storeboard1, whitemove, king):
     print("knight")
 
 
-def Rcheck(kingpos, attackingpos, storeboard, storeboard1,whitemove,king):
+def Rcheck(kingpos, attackingpos, storeboard, storeboard1, whitemove, king):
     print("rook")
 
 
-def Qcheck(kingpos, attackingpos, storeboard, storeboard1,whitemove,king):
+def Qcheck(kingpos, attackingpos, storeboard, storeboard1, whitemove, king):
     print("queen")

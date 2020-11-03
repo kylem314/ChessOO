@@ -262,3 +262,4 @@ def aidictionarything(storeboard):
         for k in storeboard[i]:
             dictionary[k[0:3]].append(i)
     return dictionary
+
