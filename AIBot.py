@@ -81,8 +81,8 @@ for key, value in squaredict:
       attackedpieces.update({board(key)[0:3] : piece})
   
 
-    
+   
 
-# Function to evaluate score of moves.  Movename is the move being tested, color is the letter of the AI's side
+# Function to evaluate scores of moves.  Movename is the move being tested, color is the letter of the AI's side
 def evaluate(movename, color):
   # If a piece is being attacked, protect it
