@@ -288,5 +288,6 @@ def protdictfunc(board, storeboard, whitemove):
         if piece != '  ' and piece[1] != 'K':
             protdict = protfunc[piece](board, protdict, board[i][0:3], i[0], int(i[1]))
         elif piece[1] == 'K':
-            kingprot(board, protdict, board[i][0:3], i[0], int(i[1]), storeboard)
+            print("Ky")
+            protdict = kingprot(board, protdict, board[i][0:3], i[0], int(i[1]), storeboard)
     return protdict
