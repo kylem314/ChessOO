@@ -22,10 +22,13 @@ two notations:
 
 """
 
+import time
 from piecedefinitions import *
 from zwhitepersp import *
 from zblackpersp import *
 from checkfunctions import *
+from protectionfunctions import *
+from main import mainmenu, key
 
 
 def movepiece(board, storeboard, whitemove, whitecolor, blackcolor):
@@ -170,7 +173,16 @@ def len5(usermove, board, storeboard, whitemove, whitecolor, blackcolor):
 
 
 def len6(usermove, board, storeboard, whitemove, whitecolor, blackcolor):
-    print("hi6")
+    if usermove.lower() == "resign":
+        if whitemove == "W":
+            print("GG, Black wins.")
+        else:
+            print("GG, White wins.")
+        time.sleep(10)
+        mainmenu(key(6), key, False, False, False, whitecolor, blackcolor, "")
+    else:
+        print("hi6")
+        movepiece(board, storeboard, whitemove, whitecolor, blackcolor)
 
 
 def len7(usermove, board, storeboard, whitemove, whitecolor, blackcolor):
@@ -197,20 +209,18 @@ def storeboardset(board, storeboard, whitemove, setting):
             storeboard = piecefunc[piece](board, storeboard, board[i], i[0], int(i[1]))
             if storeboard == storeboard1 and piece[0].upper() == whitemove:
                 stalemate = False
-            if piece[0:3] == whitemove.upper() + "K1":
+            if board[i][0:3] == whitemove.upper() + "K1":
                 kingpos = i
     if len(storeboard[kingpos]) > 0:
         storeboard = check(board, storeboard, kingpos, whitemove)
     checkmate = False
     settings = ["?", storeboard, checkmate, stalemate]
-    print(storeboard)
-    yes = aidictionarything(storeboard)
-    print(yes)
+    print(protdictfunc(board, storeboard, whitemove))
+
     return storeboard
 
 
 def check(board, storeboard, kingpos, whitemove):
-
     print(kingpos)
     king = board[kingpos]
     storeboard1 = {
@@ -227,7 +237,7 @@ def check(board, storeboard, kingpos, whitemove):
     attacking = storeboard[kingpos[0]]
     try:
         attacking1 = storeboard[kingpos[1]]
-    except:
+    except Exception:
         doublecheck = False
 
     for i in storeboard.values():
@@ -237,7 +247,7 @@ def check(board, storeboard, kingpos, whitemove):
                     if k[0].upper() == whitemove:
                         raise Exception("exception")
                 storeboard1[i].append(king)
-            except:
+            except Exception:
                 pass
             checkmate = False
     if not doublecheck:
@@ -247,7 +257,6 @@ def check(board, storeboard, kingpos, whitemove):
                 break
         checkfunctions = {"N": Ncheck, "B": Bcheck, "R": Rcheck, "Q": Qcheck, "p": whitemove.lower() + check}
         checkfunctions[attacking[0]](kingpos, attackingpos, storeboard, storeboard1)
-
 
     return storeboard1
 
@@ -263,3 +272,21 @@ def aidictionarything(storeboard):
             dictionary[k[0:3]].append(i)
     return dictionary
 
+
+# this gets a dict with key = protected, term = list of protectors
+def protdictfunc(board, storeboard, whitemove):
+    protdict = {
+        "bp1": [], "bp2": [], "bp3": [], "bp4": [], "bp5": [], "bp6": [], "bp7": [], "bp8": [],
+        "BR1": [], "BN1": [], "BB1": [], "BQ1": [], "BK1": [], "BB2": [], "BN2": [], "BR2": [],
+        "WR1": [], "WN1": [], "WB1": [], "WQ1": [], "WK1": [], "WB2": [], "WN2": [], "WR2": [],
+        "wp1": [], "wp2": [], "wp3": [], "wp4": [], "wp5": [], "wp6": [], "wp7": [], "wp8": []}
+    protfunc = {"wp": wpawnprot, "bp": bpawnprot, "WN": knightprot, "BN": knightprot, "WR": wrookprot, "BR": brookprot,
+                "WB": wbishopprot, "BB": bbishopprot, "WQ": wqueenprot, "BQ": bqueenprot}
+
+    for i in board:
+        piece = board[i][0:2]
+        if piece != '  ' and piece[1] != 'K':
+            protdict = protfunc[piece](board, protdict, board[i][0:3], i[0], int(i[1]))
+        elif piece[1] == 'K':
+            kingprot(board, protdict, board[i][0:3], i[0], int(i[1]), storeboard)
+    return protdict

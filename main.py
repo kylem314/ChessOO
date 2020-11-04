@@ -1,14 +1,7 @@
-import time
-import os
-from random import randrange
-import asyncio
-import math
 import uuid
 from animation import *
 from movepiece import *
-from piecedefinitions import *
 from zwhitepersp import *
-from zblackpersp import *
 
 # Function Definitions
 exec(open("password.py").read())
@@ -26,11 +19,11 @@ def key(string_length=10):
 
 
 def settingmenu(Key, key, replaying, exited, settingexit, whitecolor, blackcolor, colorset):
-    while settingexit == False:
+    while not settingexit:
         try:
             print(colors[whitecolor] + "\nWhite Piece Color - " + whitecolor + colors[
                 blackcolor] + "\nBlack Piece Color - " + blackcolor + u"\u001b[0m")
-        except:
+        except Exception:
             print("Please enter a valid color")
         for key, value in colors.items():
             if key != "electric blue":
@@ -100,9 +93,6 @@ colors = {"pink": u"\u001B[31m", "neon green": u"\u001B[32m", "orange": u"\u001B
 Key = key(6)
 text = ["BR", "BN", "BB", "BQ", "BK", "bp", "WR", "WN", "WB", "WQ", "WK", "wp"]
 piece = ["♜ ", "♞ ", "♝ ", "♛ ", "♚ ", "♟ ", "♜ ", "♞ ", "♝ ", "♛ ", "♚ ", "♟ "]
-colors = {"pink": u"\u001B[31m", "neon green": u"\u001B[32m", "orange": u"\u001B[33m", "blue": u"\u001B[34m",
-          "purple": u"\u001B[35m", "lighter blue": u"\u001B[36m", "red": u"\u001B[91m", "green": u"\u001B[92m",
-          "orange yellow": u"\u001B[93m", "lavender": u"\u001B[95m", "electric blue": u"\u001B[96m"}
 turnnumber = 0
 turnappend = ""
 turnnumberlist = ["Turn number:"]
@@ -230,7 +220,7 @@ def mainmenu(Key, key, replaying, exited, settingexit, whitecolor, blackcolor, c
         print("\n" + file + "\n")
         exit = input("Type exit to return to the menu\n")
         exit = exit.lower()
-        while exited == False:
+        while not exited:
             if exit == "exit":
                 print("")
                 mainmenu(Key, key, replaying, exited, settingexit, whitecolor, blackcolor, colorset)
