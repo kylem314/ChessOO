@@ -29,6 +29,7 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
+username_credentials = ["Kyle", "Shekar", "GUEST", "GUEST", "Devam", "Colin", "David"]
 
 """
 Kyle's password is kyleiscool
@@ -39,28 +40,21 @@ Devam's password is scrummaster
 GUEST's password is GUEST
 """
 
-"""
-        savefile = open("file.txt", "a")
-        savefile.write("thing")
-        savefile.close()
-"""
-
 
 def password_code():
     password_input = ""
-    username_credentials = ["Kyle", "Shekar", "GUEST", "Devam", "Colin", "David"]
 
     z = 1
     y = True
     x = False
     w = False
-    username_input = input("\nFirst authorized user is player 1 (white)\nSecond authorized user is player 2 (black)\nPlease enter username: \nType GUEST to use guest account")
+    username_input = input("\nFirst authorized user is player 1 (white)\nSecond authorized user is player 2 (black)\nPlease enter username: \nType GUEST to use guest account: ")
     while username_input not in username_credentials:
         if z == 1:
             print(bcolors.FAIL + bcolors.BOLD + "invalid" + bcolors.ENDC)
-            username_input = input("\nFirst authorized user is player 1 (white)\nSecond authorized user is player 2 (black)\nPlease enter username: \nType GUEST to use guest account")
+            username_input = input("\nFirst authorized user is player 1 (white)\nSecond authorized user is player 2 (black)\nPlease enter username: \nType GUEST to use guest account: ")
             if username_input in username_credentials:
-                password_input = input("Please enter password: \nType GUEST to use guest account")
+                password_input = input("Please enter password: \nType GUEST to use guest account: ")
                 if (password_input == "kyleiscool") and (username_input == "Kyle"):
                     x = True
                 if (password_input == "thegoat") and (username_input == "Shekar"):
@@ -76,7 +70,7 @@ def password_code():
                 y = False
                 while not x:
                     print(bcolors.FAIL + bcolors.BOLD + "invalid" + bcolors.ENDC)
-                    password_input = input("Please enter password: \nType GUEST to use guest account")
+                    password_input = input("Please enter password: \nType GUEST to use guest account: ")
                     y = False
                     if (password_input == "kyleiscool") and (username_input == "Kyle"):
                         x = True
@@ -91,7 +85,7 @@ def password_code():
                     if (password_input == "penspinner") and (username_input == "David"):
                         x = True
     if y:
-        password_input = input("Please enter password: \nType GUEST to use guest account")
+        password_input = input("Please enter password: \nType GUEST to use guest account: ")
         x = False
         if (password_input == "kyleiscool") and (username_input == "Kyle"):
             x = True
@@ -107,7 +101,7 @@ def password_code():
             x = True
         while not x:
             print(bcolors.FAIL + bcolors.BOLD + "invalid" + bcolors.ENDC)
-            password_input = input("Please enter password: \nType GUEST to use guest account")
+            password_input = input("Please enter password: \nType GUEST to use guest account: ")
             if (password_input == "kyleiscool") and (username_input == "Kyle"):
                 x = True
             if (password_input == "thegoat") and (username_input == "Shekar"):
@@ -128,6 +122,89 @@ def password_code():
     if not w:
         print(bcolors.OKGREEN + "Hello " + username_input + bcolors.ENDC)
 
+    return username_input
+
+
+def password_code2():
+    password_input = ""
+
+    z = 1
+    y = True
+    x = False
+    w = False
+    username_input2 = input("\nFirst authorized user is player 1 (white)\nSecond authorized user is player 2 (black)\nPlease enter username: \nType GUEST to use guest account: ")
+    while username_input2 not in username_credentials:
+        if z == 1:
+            print(bcolors.FAIL + bcolors.BOLD + "invalid" + bcolors.ENDC)
+            username_input2 = input("\nFirst authorized user is player 1 (white)\nSecond authorized user is player 2 (black)\nPlease enter username: \nType GUEST to use guest account: ")
+            if username_input2 in username_credentials:
+                password_input = input("Please enter password: \nType GUEST to use guest account: ")
+                if (password_input == "kyleiscool") and (username_input2 == "Kyle"):
+                    x = True
+                if (password_input == "thegoat") and (username_input2 == "Shekar"):
+                    x = True
+                if (password_input == "GUEST") and (username_input2 == "GUEST"):
+                    x = True
+                if (password_input == "scrummaster") and (username_input2 == "Devam"):
+                    x = True
+                if (password_input == "java") and (username_input2 == "Colin"):
+                    x = True
+                if (password_input == "penspinner") and (username_input2 == "David"):
+                    x = True
+                y = False
+                while not x:
+                    print(bcolors.FAIL + bcolors.BOLD + "invalid" + bcolors.ENDC)
+                    password_input = input("Please enter password: \nType GUEST to use guest account: ")
+                    y = False
+                    if (password_input == "kyleiscool") and (username_input2 == "Kyle"):
+                        x = True
+                    if (password_input == "thegoat") and (username_input2 == "Shekar"):
+                        x = True
+                    if (password_input == "GUEST") and (username_input2 == "GUEST"):
+                        x = True
+                    if (password_input == "scrummaster") and (username_input2 == "Devam"):
+                        x = True
+                    if (password_input == "java") and (username_input2 == "Colin"):
+                        x = True
+                    if (password_input == "penspinner") and (username_input2 == "David"):
+                        x = True
+    if y:
+        password_input = input("Please enter password: \nType GUEST to use guest account: ")
+        x = False
+        if (password_input == "kyleiscool") and (username_input2 == "Kyle"):
+            x = True
+        if (password_input == "thegoat") and (username_input2 == "Shekar"):
+            x = True
+        if (password_input == "GUEST") and (username_input2 == "GUEST"):
+            x = True
+        if (password_input == "scrummaster") and (username_input2 == "Devam"):
+            x = True
+        if (password_input == "java") and (username_input2 == "Colin"):
+            x = True
+        if (password_input == "penspinner") and (username_input2 == "David"):
+            x = True
+        while not x:
+            print(bcolors.FAIL + bcolors.BOLD + "invalid" + bcolors.ENDC)
+            password_input = input("Please enter password: \nType GUEST to use guest account: ")
+            if (password_input == "kyleiscool") and (username_input2 == "Kyle"):
+                x = True
+            if (password_input == "thegoat") and (username_input2 == "Shekar"):
+                x = True
+            if (password_input == "GUEST") and (username_input2 == "GUEST"):
+                x = True
+            if (password_input == "scrummaster") and (username_input2 == "Devam"):
+                x = True
+            if (password_input == "java") and (username_input2 == "Colin"):
+                x = True
+            if (password_input == "penspinner") and (username_input2 == "David"):
+                x = True
+
+    print(bcolors.OKGREEN + bcolors.BOLD + "PLAYER " + str(OOGABOOGA) + " SUCCESSFULLY LOGGED IN" + bcolors.ENDC)
+    if password_input == "GUEST":
+        print(bcolors.OKGREEN + "You are using temporary guest account" + bcolors.ENDC)
+        w = True
+    if not w:
+        print(bcolors.OKGREEN + "Hello " + username_input2 + bcolors.ENDC)
 
 
 """"
@@ -143,13 +220,18 @@ def neworexisting():
   return(account_state)
 account_state = neworexisting()
 """
+
+#delete
 skip = input("Skip?\n")
 if skip != "y":
+    #delete
+
     account_state = True
     if account_state:
-        password_code()
+        final_username = password_code()
+        username_credentials.remove(final_username)
         OOGABOOGA = 2
-        password_code()
+        password_code2()
         print(bcolors.OKBLUE + bcolors.BOLD + "\nBOTH PLAYERS HAVE SUCCESSFULLY LOGGED IN" + bcolors.ENDC)
         time.sleep(2.5)
         os.system("clear")
