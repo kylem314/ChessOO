@@ -37,26 +37,28 @@ Gamestate can be determined by piece values on board
 Integrate into code when finished by adding a menu option that will start a normal game, but call this program to choose a move every time it is the computers turn.
 """
 
+# Values for each piece, to be used for evaluating
 piecevalues = {"P" : 1, "B" : 3, "N" : 3, "R" : 5, "Q" : 9, "K" : 5}
+# List of center squares
 center = ["d4", "d5", "e4", "e5"]
+# Variable for the accumulated score of moves
 movescore = 0
+# Dictionary of protected pieces, where key = piece, value = list of protectors
+protectiondict = protdictfunc(board, storeboard, whitemove)
+# Dictionary of squares where keys are pieces and values are lists of where the pieces can move
 squaredict = storeboardset(board, storeboard, whitemove, 1)
+# Dictionary of squares where keys are squares and values are lists of which pieces can move to them
 piecedict = aidictionarything(storeboard)
+# List of all the valid moves in the format to be used for move entry
 validmoves = []
 # Dictionary of squares where AI has pieces, and their value
 mypiecespaces = {}
+# List of attacked pieces (to be used for evaluating) (Key = piece being attacked, Value = piece attacking it)
+attackedpieces = {}
 # ********* Change color to be whatever side the AI is in the future
 color = "w"
 
-"""
-aidictionarything(storeboard)    
-function to get dictionary where keys are pieces and values are lists of where the pieces can move
-
-dict = storeboardset(board,storeboard,whitemove,setting)
-function to set dict to where keys are squares and values are lists of the pieces that can move to it
-"""
-
-# Compiling every possible move in a valid entry format (9 lines but a lot of logic)
+# Compiling every possible move in a valid entry format for validmoves (9 lines but a lot of logic)
 for key, value in piecedict.items():
   moveentry = ""
   if key[0].lower == color:
@@ -72,8 +74,6 @@ for key, value in board:
   if value[0].lower == color:
     mypiecespaces.update({key : piecevalues[value[1].upper()]})
 
-# List of attacked pieces (to be used for evaluating) (Key = piece being attacked, Value = piece attacking it)
-attackedpieces = {}
 # Notes: key = square, value = pieces that can move to the square, key2 = board square being analyzed, value2 = piece on the key2 board square
 for key, value in squaredict:
   if key in mypiecespaces.keys:
@@ -85,4 +85,6 @@ for key, value in squaredict:
 
 # Function to evaluate scores of moves.  Movename is the move being tested, color is the letter of the AI's side
 def evaluate(movename, color):
-  # If a piece is being attacked, protect it
+  # Check every possible move
+  for move in validmoves:
+    # If a piece is being attacked, protect it
