@@ -1,6 +1,6 @@
 """
 Most of the time was thinking about the logic for the AI Bot rather than actually coding, so there isn't as much tangible code here yet.
-Wanted to use tensorflow, so I looked into that for a couple days but it's very complicated so I decided to use this instead -
+Wanted to use tensorflow, so I looked into that for a couple days but it's very complicated so I decided to use this instead --
 Essentially, the computer will look at a certain set of moves, and then evaluate which is the best one out of them based on certain factors, and then execute the highest scoring move.
 """
 
