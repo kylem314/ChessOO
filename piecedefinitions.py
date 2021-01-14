@@ -2,9 +2,9 @@
 def wpawn(board, storeboard, piece, file, rank):
     if board[file + str(rank + 1)].lower() == '  ':
         storeboard[file + str(rank + 1)].append(piece)
-    if rank == 2:
-        if board[file + str(rank + 2)].lower() == '  ':
-            storeboard[file + str(rank + 2)].append(piece)
+        if rank == 2:
+            if board[file + str(rank + 2)].lower() == '  ':
+                storeboard[file + str(rank + 2)].append(piece)
     try:
         if board[chr(ord(file) + 1) + str(rank + 1)][0].lower() == 'b':
             storeboard[chr(ord(file) + 1) + str(rank + 1)].append(piece)
@@ -21,9 +21,9 @@ def wpawn(board, storeboard, piece, file, rank):
 def bpawn(board, storeboard, piece, file, rank):
     if board[file + str(rank - 1)].lower() == '  ':
         storeboard[file + str(rank - 1)].append(piece)
-    if rank == 7:
-        if board[file + str(rank - 2)].lower() == '  ':
-            storeboard[file + str(rank - 2)].append(piece)
+        if rank == 7:
+            if board[file + str(rank - 2)].lower() == '  ':
+                storeboard[file + str(rank - 2)].append(piece)
     try:
         if board[chr(ord(file) + 1) + str(rank - 1)][0].lower() == 'w':
             storeboard[chr(ord(file) + 1) + str(rank - 1)].append(piece)

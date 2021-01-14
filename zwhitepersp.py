@@ -1,4 +1,7 @@
+import os
+
 def whitepersp(whitecolor,blackcolor,board):
+  os.system("clear")
   testvar1 = "hi"
   testvar2 = "bye"
   testvar3 = -1

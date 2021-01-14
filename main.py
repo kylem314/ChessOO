@@ -1,22 +1,21 @@
 import uuid
 from animation import *
-from movepiece import *
+from movepiece import movepiece
+from movepieceai import aimovepiece
 from zwhitepersp import *
 
 # Function Definitions
-exec(open("password.py").read())
+# exec(open("password.py").read())
 
 
 def replaygame():
     exec(open("replaygame.py").read())
-
 
 def key(string_length=10):
     random = str(uuid.uuid4())
     random = random.upper()
     random = random.replace("-", "")
     return random[0:string_length]
-
 
 def settingmenu(Key, key, replaying, exited, settingexit, whitecolor, blackcolor, colorset):
     while not settingexit:
@@ -195,7 +194,7 @@ def mainmenu(Key, key, replaying, exited, settingexit, whitecolor, blackcolor, c
 
     # Welcome message
     print("Welcome to ASCII Chess! \n")
-    print("================\nMenu:\n1. Start Game\n2. Play Replay\n3. Rules\n4. Settings\n5. Exit\n================\n")
+    print("================\nMenu:\n1. Start Game (Multiplayer)\n2. Start Singleplayer (Vs AI)\n3. Play Replay\n4. Rules\n5. Settings\n6. Exit\n================\n")
     start = input("What would you like to do?\n")
     start = start.lower()
 
@@ -212,10 +211,21 @@ def mainmenu(Key, key, replaying, exited, settingexit, whitecolor, blackcolor, c
         whitepersp(whitecolor, blackcolor, board)
         movepiece(board, storeboard, whitemove, whitecolor, blackcolor)
 
-    elif start == "2" or start == "play replay":
+    elif start == "2" or start == "start singleplayer":
+        print("")
+        savefile = open("savereplay.txt", "a")
+        savefile.write(Key)
+        savefile.close()
+        savefile = open("savenotation.txt", "a")
+        savefile.write(Key)
+        savefile.close()
+        whitepersp(whitecolor, blackcolor, board)
+        aimovepiece(board, storeboard, whitemove, whitecolor, blackcolor, 2, False)
+
+    elif start == "3" or start == "play replay":
         replaygame()
 
-    elif start == "3" or start == "rules":
+    elif start == "4" or start == "rules":
         file = open("zzzrules.txt").read()
         print("\n" + file + "\n")
         exit = input("Type exit to return to the menu\n")
@@ -229,7 +239,7 @@ def mainmenu(Key, key, replaying, exited, settingexit, whitecolor, blackcolor, c
             exit = input("Type exit to return to the menu\n")
             exit = exit.lower()
 
-    elif start == "4" or start == "settings":
+    elif start == "5" or start == "settings":
         indexerthing = 0
         settingmenu(Key, key, replaying, exited, settingexit, whitecolor, blackcolor, colorset)
         for letter in colorsets:
@@ -240,7 +250,7 @@ def mainmenu(Key, key, replaying, exited, settingexit, whitecolor, blackcolor, c
         blackcolor = colorsets[indexerthing:]
         mainmenu(Key, key, replaying, exited, settingexit, whitecolor, blackcolor, colorset)
 
-    elif start == "5" or start == "exit":
+    elif start == "6" or start == "exit":
         print("\nwow rude")
 
     else:
