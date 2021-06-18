@@ -162,3 +162,4 @@ while lastturn == False:
         print("please input a valid response")
 
 mainmenu(Key, key, replaying, exited, settingexit, whitecolor, blackcolor, colorset)
+

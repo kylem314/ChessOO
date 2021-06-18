@@ -26,8 +26,8 @@ def blackpersp(whitecolor, blackcolor, board):
         row = 9 - row  # rows are reversed
         column = (i[0])
         if row == 1:
-            list1.insert(0, board[i][
-                            0:2])  # list1 would now be [board[a8]] cuz that was inserted, and would add the rest each time it iterates thru
+            # list1 would now be [board[a8]] cuz that was inserted, and would add the rest each time it iterates thru
+            list1.insert(0, board[i][0:2])  
         elif row == 2:
             list2.insert(0, board[i][0:2])
         elif row == 3:

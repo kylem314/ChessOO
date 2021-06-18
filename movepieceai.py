@@ -43,7 +43,7 @@ def aimovepiece(board, storeboard, whitemove, whitecolor, blackcolor, turnnum, a
         usermove = input(
             "What move would you like to make? (startsquare endsquare to move a piece, resign to resign the game)\n")
         try:
-            move1 = {2: len2, 3: len3, 4: len4, 5: len5, 6: len6, 7: len7}
+            move1 = {5: len5}
             move1[len(usermove)](usermove, board, storeboard, whitemove, whitecolor, blackcolor, turnnum)
         except Exception as e:
             # print("Please enter valid move.")
@@ -53,88 +53,134 @@ def aimovepiece(board, storeboard, whitemove, whitecolor, blackcolor, turnnum, a
 
 def len5(usermove, board, storeboard, whitemove, whitecolor, blackcolor, turnnum):
     aiturn = False
-    if usermove == "0-0-0":
-        if str(whitemove + "R1n") in storeboard["d1"] and board["e1"] == "WK1n":
-            try:
-                for i in storeboard["d1"]:
-                    if i[0].lower() == "b":
-                        raise Exception("no")
-                for i in storeboard["c1"]:
-                    if i[0].lower() == "b":
-                        raise Exception("no")
-                for i in storeboard["b1"]:
-                    if i[0].lower() == "b":
-                        raise Exception("no")
-                board["e1"] = "  "
-                board["d1"] = "WR1"
-                board["c1"] = "WK1"
-                board["a1"] = "  "
-                blackpersp(whitecolor, blackcolor, board)
-                whitemove = "B"
-                storeboard = storeboardset(board, storeboard, whitemove, 1)
-                aiturn = True
-            except:
-                print("Please enter a valid move.")
-        elif str(whitemove + "R1n") in storeboard["d8"] and board["e8"] == "BK1n":
-            try:
-                for i in storeboard["d8"]:
-                    if i[0].lower() == "w":
-                        raise Exception("no")
-                for i in storeboard["c8"]:
-                    if i[0].lower() == "w":
-                        raise Exception("no")
-                for i in storeboard["b8"]:
-                    if i[0].lower() == "w":
-                        raise Exception("no")
-                board["e8"] = "  "
-                board["d8"] = "BR1"
-                board["c8"] = "BK1"
-                board["a8"] = "  "
-                whitepersp(whitecolor, blackcolor, board)
-                whitemove = "W"
-                storeboard = storeboardset(board, storeboard, whitemove, 1)
-                aiturn = True
-            except:
-                print("Please enter a valid move.")
-        else:
-          print("Please enter a valid move.")
-    try:
-        if usermove[2] == ' ':
-            piece = board[usermove[0:2]]
-            startpos = usermove[0:2]
-            if piece in storeboard[usermove[3:5]]:
-                board[startpos] = '  '
-                board[usermove[3:5]] = piece
-                if whitemove == "W":
-                    blackpersp(whitecolor, blackcolor, board)
-                    whitemove = "B"
+    if str(whitemove + "R1n") in storeboard["d1"] and board["e1"] == "WK1n" and usermove == "e1 c1":
+        try:
+            for i in storeboard["d1"]:
+                if i[0].lower() == "b":
+                    raise Exception("no")
+            for i in storeboard["c1"]:
+                if i[0].lower() == "b":
+                    raise Exception("no")
+            for i in storeboard["b1"]:
+                if i[0].lower() == "b":
+                    raise Exception("no")
+            board["e1"] = "  "
+            board["d1"] = "WR1"
+            board["c1"] = "WK1"
+            board["a1"] = "  "
+            blackpersp(whitecolor, blackcolor, board)
+            whitemove = "B"
+            storeboard = storeboardset(board, whitemove, 1)
+            aiturn = True
+        except:
+            print("Please enter a valid move.")
+    elif str(whitemove + "R1n") in storeboard["d8"] and board["e8"] == "BK1n" and usermove == "e8 c8":
+        try:
+            for i in storeboard["d8"]:
+                if i[0].lower() == "w":
+                    raise Exception("no")
+            for i in storeboard["c8"]:
+                if i[0].lower() == "w":
+                    raise Exception("no")
+            for i in storeboard["b8"]:
+                if i[0].lower() == "w":
+                    raise Exception("no")
+            board["e8"] = "  "
+            board["d8"] = "BR1"
+            board["c8"] = "BK1"
+            board["a8"] = "  "
+            whitepersp(whitecolor, blackcolor, board)
+            whitemove = "W"
+            storeboard = storeboardset(board, whitemove, 1)
+            aiturn = True
+        except:
+            print("Please enter a valid move.")
+    elif str(whitemove + "R2n") in storeboard["f1"] and board["e1"] == "WK1n" and usermove == "e1 g1":
+        try:
+            for i in storeboard["f1"]:
+                if i[0].lower() == "b":
+                    raise Exception("no")
+            for i in storeboard["g1"]:
+                if i[0].lower() == "b":
+                    raise Exception("no")
+            board["e1"] = "  "
+            board["f1"] = "WR2"
+            board["g1"] = "WK1"
+            board["h1"] = "  "
+            blackpersp(whitecolor, blackcolor, board)
+            whitemove = "B"
+            storeboard = storeboardset(board, whitemove, 1)
+            aiturn = True
+        except:
+            print("Please enter a valid move.")
+    elif str(whitemove + "R2n") in storeboard["f8"] and board["e8"] == "BK1n" and usermove == "e8 g8":
+        try:
+            for i in storeboard["f8"]:
+                if i[0].lower() == "w":
+                    raise Exception("no")
+            for i in storeboard["g8"]:
+                if i[0].lower() == "w":
+                    raise Exception("no")
+            board["e8"] = "  "
+            board["f8"] = "BR2"
+            board["g8"] = "BK1"
+            board["ah8"] = "  "
+            whitepersp(whitecolor, blackcolor, board)
+            whitemove = "W"
+            storeboard = storeboardset(board, whitemove, 1)
+            aiturn = True
+        except:
+            print("Please enter a valid move.")
+    else:
+        try:
+            if usermove[2] == ' ':
+                piece = board[usermove[0:2]]
+                startpos = usermove[0:2]
+                if piece in storeboard[usermove[3:5]]:
+                    board[startpos] = '  '
+                    board[usermove[3:5]] = piece
+                    if whitemove == "W":
+                        blackpersp(whitecolor, blackcolor, board)
+                        whitemove = "B"
+                    else:
+                        whitemove = "W"
+                        whitepersp(whitecolor, blackcolor, board)
+                    storeboard = storeboardset(board, whitemove, 1)
+                    aiturn = True
                 else:
-                    whitemove = "W"
-                    whitepersp(whitecolor, blackcolor, board)
-                storeboard = storeboardset(board, storeboard, whitemove, 1)
-                aiturn = True
-            else:
-                print("Please enter a valid move.")
-    except Exception as e:
-        print("Please enter a valid move.")
-        print(e)
-    aimovepiece(board, storeboard, whitemove, whitecolor, blackcolor, turnnum + 1, aiturn)
+                    print("Please enter a valid move.")
+        except Exception as e:
+            print("Please enter a valid move.")
+            print(e)
+        aimovepiece(board, storeboard, whitemove, whitecolor, blackcolor, turnnum + 1, aiturn)
 
 def ailen5(usermove, board, storeboard, whitemove, whitecolor, blackcolor, turnnum, aicolor):
+    whitepersp(whitecolor, blackcolor, board)
     try:
         if usermove[2] == ' ':
             piece = board[usermove[0:2]]
             startpos = usermove[0:2]
-            if piece in storeboard[usermove[3:5]]:
+            if piece[0:3] in storeboard[usermove[3:5]]:
                 board[startpos] = '  '
                 board[usermove[3:5]] = piece
+                if usermove[4] == 8 and piece[1] == 'p' or usermove[4] == 1 and piece[1] == 'p':
+                    # promotion
+                    promotion = input("What piece would you like to promote to? \nYour options are Queen, Rook, Knight, or Bishop")
+                    promotion_valid = {"queen":"Q", "rook":"R", "knight":"N", "bishop":"B", "q":"Q", "r":"R", "n":"N", "b":"B"}
+                    if promotion in promotion_valid.keys():
+                        piece = whitemove + promotion_valid[promotion]
+                    num = 0
+                    for i in board.values():
+                        if i[0:2] == piece and i[2] > num:
+                            i[2] = num
+                    board[usermove[3:5]] = piece + num
                 if whitemove == "W":
                     blackpersp(whitecolor, blackcolor, board)
                     whitemove = "B"
                 else:
                     whitemove = "W"
                     whitepersp(whitecolor, blackcolor, board)
-                storeboard = storeboardset(board, storeboard, whitemove, 1)
+                storeboard = storeboardset(board, whitemove, 1)
             else:
                 print("Please enter a valid move.")
     except Exception as e:
@@ -142,7 +188,7 @@ def ailen5(usermove, board, storeboard, whitemove, whitecolor, blackcolor, turnn
         print(e)
     aimovepiece(board, storeboard, whitemove, whitecolor, blackcolor, turnnum + 1, False)
 
-def storeboardset(board, storeboard, whitemove, setting):
+def storeboardset(board, whitemove, setting):
     storeboard = {
         "a8": [], "b8": [], "c8": [], "d8": [], "e8": [], "f8": [], "g8": [], "h8": [],
         "a7": [], "b7": [], "c7": [], "d7": [], "e7": [], "f7": [], "g7": [], "h7": [],
@@ -158,22 +204,27 @@ def storeboardset(board, storeboard, whitemove, setting):
     for i in board:
         piece = board[i][0:2]
         if piece != '  ':
-            storeboard1 = storeboard
-            storeboard = piecefunc[piece](board, storeboard, board[i], i[0], int(i[1]))
-            if storeboard == storeboard1 and piece[0].upper() == whitemove:
+            storeboard1 = dict(storeboard)
+            storeboard = dict(piecefunc[piece](dict(board), dict(storeboard), board[i], i[0], int(i[1])))
+            if storeboard != storeboard1 and piece[0].upper() == whitemove:
                 stalemate = False
             if board[i][0:3] == whitemove + "K1":
                 kingpos = i
-    #if len(storeboard[kingpos]) > 0:
-        #storeboard = check(board, storeboard, kingpos, whitemove)  
+                print("Kingpos = " + kingpos)
+    
     checkmate = False
-    settings = ["?", storeboard, checkmate, stalemate]
-    return storeboard
+    if setting != 2:
+        if len(storeboard[kingpos]) > 0:
+            storeboard = check(board, storeboard, kingpos, whitemove)
+        return storeboard
+    else:
+        return kingpos, storeboard
 
 
 def check(board, storeboard, kingpos, whitemove):
-    # print(kingpos)
+    # note that because it is calculating the upcoming move, whitemove is the side that will be in check
     king = board[kingpos]
+    piecedict = aidictionarything(storeboard)
     storeboard1 = {
         "a8": [], "b8": [], "c8": [], "d8": [], "e8": [], "f8": [], "g8": [], "h8": [],
         "a7": [], "b7": [], "c7": [], "d7": [], "e7": [], "f7": [], "g7": [], "h7": [],
@@ -185,30 +236,20 @@ def check(board, storeboard, kingpos, whitemove):
         "a1": [], "b1": [], "c1": [], "d1": [], "e1": [], "f1": [], "g1": [], "h1": []}
     check = True
     checkmate = True
-    attacking = storeboard[kingpos[0]]
-    try:
-        attacking1 = storeboard[kingpos[1]]
-    except Exception:
-        doublecheck = False
-
-    for i in storeboard.values():
-        if king in i:
-            try:
-                for k in i:
-                    if k[0].upper() == whitemove:
-                        raise Exception("exception")
-                storeboard1[i].append(king)
-            except Exception:
-                pass
-            checkmate = False
-    if not doublecheck:
-        for key, value in board.items():
-            if value == attacking:
-                attackingpos = key
-                break
-        checkfunctions = {"N": Ncheck, "B": Bcheck, "R": Rcheck, "Q": Qcheck, "p": whitemove.lower() + check}
-        checkfunctions[attacking[0]](kingpos, attackingpos, storeboard, storeboard1)
-
+    board1 = dict(board)
+    for piece in piecedict.keys():
+        if piece[0].upper() == whitemove:
+            for space in board.keys():
+                if board[space][0:3] == piece:
+                    piecepos = space
+                    break
+            for move in piecedict[piece]:
+                board1 = dict(board)
+                board1[piecepos] = '  '
+                board1[move] = board[piecepos]
+                kingpos2, storeboard2 = storeboardset(board1, whitemove, 2)
+                if len(storeboard2[kingpos2]) == 0:
+                    storeboard1[move].append(piece)
     return storeboard1
 
 
@@ -244,10 +285,10 @@ def protdictfunc(board, storeboard, whitemove):
     return protdict
 
     """
-      storeboard = storeboardset(board, storeboard, whitemove, 1)
+      storeboard = storeboardset(board, whitemove, 1)
       protectiondict = protdictfunc(board, storeboard, whitemove)
       piecedict = aidictionarything(storeboard)
-      squaredict = storeboardset(board, storeboard, whitemove, 1)
+      storeboard = storeboardset(board, whitemove, 1)
       mypiecespaces = {}
       enemypiecespaces = {}
       attackedpieces = {}
@@ -260,7 +301,7 @@ def protdictfunc(board, storeboard, whitemove):
             mypiecespaces.update({key : piecevalues[value[1].upper()]})
           elif value[0].lower != color:
             enemypiecespaces.update({key : piecevalues[value[1].upper()]})
-      for key, value in squaredict:
+      for key, value in storeboard:
         for piece in value:
           if key in mypiecespaces.keys() and piece[0] != color:
             attackedpieces.update({board[key][0:4] : piece})
@@ -276,12 +317,12 @@ def primaryai(board, storeboard, whitemove, whitecolor, blackcolor, turnnum):
     # Variable for the accumulated score of moves
     movescore = 0
     # Dictionary of protected pieces, where key = piece, value = list of protectors
-    storeboard = storeboardset(board, storeboard, whitemove, 1)
+    storeboard = storeboardset(board, whitemove, 1)
     protectiondict = protdictfunc(board, storeboard, whitemove)
     # Dictionary of squares where keys are pieces and values are lists of where the pieces can move
     piecedict = aidictionarything(storeboard)
     # Dictionary of squares where keys are squares and values are lists of which pieces can move to them
-    squaredict = storeboardset(board, storeboard, whitemove, 1)
+    # squaredict = storeboardset(board, whitemove, 1)
     # List of all the valid moves in the format to be used for move entry
     validmoves = []
     # Dictionary of squares where AI/enemy has pieces, and their value
@@ -303,7 +344,7 @@ def primaryai(board, storeboard, whitemove, whitecolor, blackcolor, turnnum):
                     break
             for term in value:
                 validmoves.append(current_piece_location + " " + term)
-    # print(squaredict)
+    # print(storeboard)
     # print(validmoves)
 
     # Calculating the enemy total piece score to find the differential
@@ -320,7 +361,7 @@ def primaryai(board, storeboard, whitemove, whitecolor, blackcolor, turnnum):
       
 
     # Notes: key = square, value = pieces that can move to the square, key2 = board square being analyzed, value2 = piece on the key2 board square
-    for key, value in squaredict:
+    for key, value in storeboard:
       for piece in value:
         if key in mypiecespaces.keys() and piece[0] != color:
           attackedpieces.update({board[key][0:4] : piece})
@@ -345,12 +386,12 @@ def primaryai(board, storeboard, whitemove, whitecolor, blackcolor, turnnum):
       score = score * -80
       return score
       
-    def centercontrol(movename, color, board, squaredict, mypiecespaces, protectiondict):
+    def centercontrol(movename, color, board, storeboard, mypiecespaces, protectiondict):
       center = ["d4", "d5", "e4", "e5"]
       centerscore = 0
       centerpieces = []
       # If a piece is attacking the center
-      for square, piece in squaredict.items():
+      for square, piece in storeboard.items():
         if square in center:
           for var3 in piece:
             if var3[0].lower() == color:
@@ -380,10 +421,10 @@ def primaryai(board, storeboard, whitemove, whitecolor, blackcolor, turnnum):
     # Function to evaluate scores of moves.  Movename is the move being tested, color is the letter of the AI's side
     def evaluate(movename, color, board, storeboard, whitemove, pre_enemyscore, turnnum):  
       piecevalues = {"P" : 1, "B" : 3, "N" : 3, "R" : 5, "Q" : 9, "K" : 5}
-      storeboard = storeboardset(board, storeboard, whitemove, 1)
+      storeboard = storeboardset(board, whitemove, 1)
       protectiondict = protdictfunc(board, storeboard, whitemove)
       piecedict = aidictionarything(storeboard)
-      squaredict = storeboardset(board, storeboard, whitemove, 1)
+      # storeboard = storeboardset(board, whitemove, 1)
       mypiecespaces = {}
       enemypiecespaces = {}
       attackedpieces = {}
@@ -396,7 +437,7 @@ def primaryai(board, storeboard, whitemove, whitecolor, blackcolor, turnnum):
             enemypiecespaces.update({key : piecevalues[value[1].upper()]})
       for piecevalue in enemypiecespaces.values():
         pre_enemyscore += piecevalue
-      for key, value in squaredict:
+      for key, value in storeboard:
         for piece in value:
           if key in mypiecespaces.keys() and piece[0] != color:
             attackedpieces.update({board[key][0:4] : piece})
@@ -406,7 +447,7 @@ def primaryai(board, storeboard, whitemove, whitecolor, blackcolor, turnnum):
           # print(movescore)
           movescore += killscore(movename, color, enemypiecespaces, pre_enemyscore) * multiplier [1]
           # print(movescore)
-          movescore += centercontrol(movename, color, board, squaredict, mypiecespaces, protectiondict) * multiplier [2]
+          movescore += centercontrol(movename, color, board, storeboard, mypiecespaces, protectiondict) * multiplier [2]
           # print(movescore)
           break 
       return {movename : movescore}
@@ -426,12 +467,29 @@ def primaryai(board, storeboard, whitemove, whitecolor, blackcolor, turnnum):
     #    movescoredict.update({move: random.randrange(0,1000)})
 
     ## print(movescoredict)
-    bestmove = ["", -9999]
+    difficulty = 4
+    bestmoves = [["", -9999]]
     for move, score in movescoredict.items():
-      if score >= bestmove[1]:
-        bestmove = [move, score]
-        # print("Changed to " + str(score))
-
+      for i in range(difficulty):
+        try:
+          if score > bestmoves[i][1]:
+            bestmoves.insert(i, [move, score])
+            break
+          elif score == bestmoves[i][1]:
+            randomnumber = i + random.randrange(0,2)
+            if randomnumber >= 0:
+              bestmoves.insert(randomnumber, [move, score])
+            else:
+              bestmoves.insert(0, [move, score])
+            break
+        except KeyError:
+          bestmoves.append([move, score])
+          break
+    # print(bestmoves)
+    bestmoves = bestmoves[0:difficulty]
+            # print("Changed to " + str(score))
+    bestmove = bestmoves[random.randrange(0,difficulty)]
+    # print(bestmove)
     # print(bestmove[0] + "  BESTMOVE!!!!!!!!!")
     return bestmove[0]
 

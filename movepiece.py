@@ -60,6 +60,7 @@ from zwhitepersp import *
 from zblackpersp import *
 from checkfunctions import *
 from protectionfunctions import *
+import json
 #from main import mainmenu, key
 
 
@@ -67,7 +68,7 @@ def movepiece(board, storeboard, whitemove, whitecolor, blackcolor):
     usermove = input(
         "What move would you like to make? (startsquare endsquare to move a piece, resign to resign the game)\n")
     try:
-        move1 = {2: len2, 3: len3, 4: len4, 5: len5, 6: len6, 7: len7}
+        move1 = {5: len5}
         move1[len(usermove)](usermove, board, storeboard, whitemove, whitecolor, blackcolor)
     except Exception as e:
         print("Please enter valid move.")
@@ -75,61 +76,80 @@ def movepiece(board, storeboard, whitemove, whitecolor, blackcolor):
         movepiece(board, storeboard, whitemove, whitecolor, blackcolor)
 
 def len5(usermove, board, storeboard, whitemove, whitecolor, blackcolor):
-    if usermove == "0-0-0":
-        if str(whitemove + "R1n") in storeboard["d1"] and board["e1"] == "WK1n":
-            try:
-                for i in storeboard["d1"]:
-                    if i[0].lower() == "b":
-                        raise Exception("no")
-                for i in storeboard["c1"]:
-                    if i[0].lower() == "b":
-                        raise Exception("no")
-                for i in storeboard["b1"]:
-                    if i[0].lower() == "b":
-                        raise Exception("no")
-                board["e1"] = "  "
-                board["d1"] = "WR1"
-                board["c1"] = "WK1"
-                board["a1"] = "  "
-                blackpersp(whitecolor, blackcolor, board)
-                whitemove = "B"
-                storeboard = storeboardset(board, storeboard, whitemove, 1)
-                savefile = open("savereplay.txt", "a")
-                savefile.write(usermove)
-                savefile.close()
-                savefile = open("savenotation.txt", "a")
-                savefile.write(usermove)
-                savefile.close()
-            except:
-                print("Please enter a valid move.")
-        elif str(whitemove + "R1n") in storeboard["d8"] and board["e8"] == "BK1n":
-            try:
-                for i in storeboard["d8"]:
-                    if i[0].lower() == "w":
-                        raise Exception("no")
-                for i in storeboard["c8"]:
-                    if i[0].lower() == "w":
-                        raise Exception("no")
-                for i in storeboard["b8"]:
-                    if i[0].lower() == "w":
-                        raise Exception("no")
-                board["e8"] = "  "
-                board["d8"] = "BR1"
-                board["c8"] = "BK1"
-                board["a8"] = "  "
-                whitepersp(whitecolor, blackcolor, board)
-                whitemove = "W"
-                storeboard = storeboardset(board, storeboard, whitemove, 1)
-                savefile = open("savereplay.txt", "a")
-                savefile.write(usermove)
-                savefile.close()
-                savefile = open("savenotation.txt", "a")
-                savefile.write(usermove)
-                savefile.close()
-            except:
-                print("Please enter a valid move.")
-        else:
-          print("please enter a valid move.")
+    if str(whitemove + "R1n") in storeboard["d1"] and board["e1"] == "WK1n" and usermove == "e1 c1":
+        try:
+            for i in storeboard["d1"]:
+                if i[0].lower() == "b":
+                    raise Exception("no")
+            for i in storeboard["c1"]:
+                if i[0].lower() == "b":
+                    raise Exception("no")
+            for i in storeboard["b1"]:
+                if i[0].lower() == "b":
+                    raise Exception("no")
+            board["e1"] = "  "
+            board["d1"] = "WR1"
+            board["c1"] = "WK1"
+            board["a1"] = "  "
+            blackpersp(whitecolor, blackcolor, board)
+            whitemove = "B"
+            storeboard = storeboardset(board, whitemove, 1)
+        except:
+            print("Please enter a valid move.")
+    elif str(whitemove + "R1n") in storeboard["d8"] and board["e8"] == "BK1n" and usermove == "e8 c8":
+        try:
+            for i in storeboard["d8"]:
+                if i[0].lower() == "w":
+                    raise Exception("no")
+            for i in storeboard["c8"]:
+                if i[0].lower() == "w":
+                    raise Exception("no")
+            for i in storeboard["b8"]:
+                if i[0].lower() == "w":
+                    raise Exception("no")
+            board["e8"] = "  "
+            board["d8"] = "BR1"
+            board["c8"] = "BK1"
+            board["a8"] = "  "
+            whitepersp(whitecolor, blackcolor, board)
+            whitemove = "W"
+            storeboard = storeboardset(board, whitemove, 1)
+        except:
+            print("Please enter a valid move.")
+    elif str(whitemove + "R1n") in storeboard["f1"] and board["e1"] == "WK1n" and usermove == "e1 g1":
+        try:
+            for i in storeboard["f1"]:
+                if i[0].lower() == "b":
+                    raise Exception("no")
+            for i in storeboard["g1"]:
+                if i[0].lower() == "b":
+                    raise Exception("no")
+            board["e1"] = "  "
+            board["f1"] = "WR1"
+            board["g1"] = "WK1"
+            board["h1"] = "  "
+            blackpersp(whitecolor, blackcolor, board)
+            whitemove = "B"
+            storeboard = storeboardset(board, whitemove, 1)
+        except:
+            print("Please enter a valid move.")
+    elif str(whitemove + "R1n") in storeboard["f8"] and board["e8"] == "BK1n" and usermove == "e8 g8":
+        try:
+            for i in storeboard["f8"]:
+                if i[0].lower() == "w":
+                    raise Exception("no")
+            for i in storeboard["g8"]:
+                if i[0].lower() == "w":
+                    raise Exception("no")
+            board["e8"] = "  "
+            board["f8"] = "BR1"
+            board["g8"] = "BK1"
+            board["ah8"] = "  "
+            whitepersp(whitecolor, blackcolor, board)
+            whitemove = "W"
+            storeboard = storeboardset(board, whitemove, 1)
+        except:
+            print("Please enter a valid move.")
     try:
         if usermove[2] == ' ':
             piece = board[usermove[0:2]]
@@ -140,16 +160,18 @@ def len5(usermove, board, storeboard, whitemove, whitecolor, blackcolor):
                 savefile = open("savereplay.txt", "a")
                 savefile.write(usermove)
                 savefile.close()
+                '''
                 savefile = open("savenotation.txt", "a")
                 savefile.write()
                 savefile.close()
+                '''
                 if whitemove == "W":
                     blackpersp(whitecolor, blackcolor, board)
                     whitemove = "B"
                 else:
                     whitemove = "W"
                     whitepersp(whitecolor, blackcolor, board)
-                storeboard = storeboardset(board, storeboard, whitemove, 1)
+                storeboard = storeboardset(board, whitemove, 1)
             else:
                 print("Please enter a valid move.")
     except Exception as e:
@@ -157,7 +179,7 @@ def len5(usermove, board, storeboard, whitemove, whitecolor, blackcolor):
         print(e)
     movepiece(board, storeboard, whitemove, whitecolor, blackcolor)
 
-def storeboardset(board, storeboard, whitemove, setting):
+def storeboardset(board, whitemove, setting):
     storeboard = {
         "a8": [], "b8": [], "c8": [], "d8": [], "e8": [], "f8": [], "g8": [], "h8": [],
         "a7": [], "b7": [], "c7": [], "d7": [], "e7": [], "f7": [], "g7": [], "h7": [],
@@ -179,9 +201,24 @@ def storeboardset(board, storeboard, whitemove, setting):
                 stalemate = False
             if board[i][0:3] == whitemove.upper() + "K1":
                 kingpos = i
-    if len(storeboard[kingpos]) > 0:
-        storeboard = check(board, storeboard, kingpos, whitemove)
     checkmate = False
+    settings = ["?", storeboard, checkmate, stalemate]
+    if setting != 2:
+        if len(storeboard[kingpos]) > 0:
+            storeboard = check(board, storeboard, kingpos, whitemove)
+        tool = open("zzzztool.txt", "a")
+        tool.write(json.dumps(board) + "\n\n")
+        tool.close()
+        return storeboard
+    else:
+        return kingpos, storeboard
+    return storeboard
+
+
+def check(board, storeboard, kingpos, whitemove):
+    # note that because it is calculating the upcoming move, whitemove is the side that will be in check
+    king = board[kingpos]
+    piecedict = aidictionarything(storeboard)
     storeboard1 = {
         "a8": [], "b8": [], "c8": [], "d8": [], "e8": [], "f8": [], "g8": [], "h8": [],
         "a7": [], "b7": [], "c7": [], "d7": [], "e7": [], "f7": [], "g7": [], "h7": [],
@@ -191,39 +228,23 @@ def storeboardset(board, storeboard, whitemove, setting):
         "a3": [], "b3": [], "c3": [], "d3": [], "e3": [], "f3": [], "g3": [], "h3": [],
         "a2": [], "b2": [], "c2": [], "d2": [], "e2": [], "f2": [], "g2": [], "h2": [],
         "a1": [], "b1": [], "c1": [], "d1": [], "e1": [], "f1": [], "g1": [], "h1": []}
-    settings = ["?", storeboard, checkmate, stalemate]
-    return storeboard
-
-
-def check(board, storeboard, kingpos, whitemove):
-    print(kingpos)
-    king = board[kingpos]
     check = True
     checkmate = True
-    attacking = storeboard[kingpos[0]]
-    try:
-        attacking1 = storeboard[kingpos[1]]
-    except Exception:
-        doublecheck = False
-
-    for i in storeboard.values():
-        if king in i:
-            try:
-                for k in i:
-                    if k[0].upper() == whitemove:
-                        raise Exception("exception")
-                storeboard1[i].append(king)
-            except Exception:
-                pass
-            checkmate = False
-    if not doublecheck:
-        for key, value in board.items():
-            if value == attacking:
-                attackingpos = key
-                break
-        checkfunctions = {"N": Ncheck, "B": Bcheck, "R": Rcheck, "Q": Qcheck, "p": whitemove.lower() + check}
-        checkfunctions[attacking[0]](kingpos, attackingpos, storeboard, storeboard1)
-
+    board1 = dict(board)
+    for piece in piecedict.keys():
+        if piece[0].upper() == whitemove:
+            for space in board.keys():
+                if board[space][0:3] == piece:
+                    piecepos = space
+                    break
+            for move in piecedict[piece]:
+                board1 = dict(board)
+                board1[piecepos] = '  '
+                board1[move] = board[piecepos]
+                kingpos2, storeboard2 = storeboardset(board1, whitemove, 2)
+                if len(storeboard2[kingpos2]) == 0:
+                    storeboard1[move].append(piece)
+    print(storeboard1)
     return storeboard1
 
 def aidictionarything(storeboard):
