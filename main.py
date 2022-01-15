@@ -1,4 +1,5 @@
 import uuid
+import math
 from animation import *
 from movepiece import movepiece
 from movepieceai import aimovepiece
@@ -109,8 +110,8 @@ bkcastle = True
 bqcastle = True
 firstturn = False
 squarecheck = 0
-whitecolor = "red"
-blackcolor = "lighter blue"
+whitecolor = "lighter blue"
+blackcolor = "lavender"
 replaying = False
 whiteking = "e1"
 blackking = "e8"

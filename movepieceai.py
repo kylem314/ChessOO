@@ -131,6 +131,46 @@ def len5(usermove, board, storeboard, whitemove, whitecolor, blackcolor, turnnum
             aiturn = True
         except:
             print("Please enter a valid move.")
+
+    elif usermove == "mlist":
+      conversion = {"BR":"♜ ", "BN":"♞ ", "BB":"♝ ", "BQ":"♛ ", "BK":"♚ ", "bp":"♟ ", "WR":"♜ ", "WN":"♞ ", "WB":"♝ ", "WQ":"♛ ", "WK":"♚ ", "wp":"♟ "}
+      colors = {"pink":u"\u001B[31m", "neon green":u"\u001B[32m","orange":u"\u001B[33m", "blue":u"\u001B[34m", "purple":u"\u001B[35m", "lighter blue":u"\u001B[36m", "red":u"\u001B[91m", "green":u"\u001B[92m", "orange yellow":u"\u001B[93m", "lavender":u"\u001B[95m", "electric blue":u"\u001B[96m"}
+      colorconvert = {"w": whitecolor, "b": blackcolor, "W": whitecolor, "B": blackcolor}
+      for square, moves in storeboard.items():
+        printing = square + ": "
+        for move in moves:
+          printing += colors[colorconvert[move[0]]] + conversion[move[0:2]] + move[2] + u"\u001B[0m" + " "
+        if square[0] == "h":
+          printing += "\n"
+        else:
+          printing += "|"
+        print(printing, end = "")
+        '''
+        tempvar = "x"
+        tempindex = 0
+        tempindex2 = 0
+        text = ["BR", "BN", "BB", "BQ", "BK", "bp", "WR", "WN", "WB", "WQ", "WK", "wp"]
+        piece = ["♜ ", "♞ ", "♝ ", "♛ ", "♚ ", "♟ ", "♜ ", "♞ ", "♝ ", "♛ ", "♚ ", "♟ "]
+        if square[0] == "h":
+          for move in moves: 
+            tempvar = move[0, 2]
+            for thing in text:
+              tempindex2 += 1
+              if thing == move:
+                tempindex = tempindex2
+                tempvar = piece[tempindex2 - 1]
+          print(square + " " + tempvar + moves[2])
+        else:
+          for move in moves: 
+            tempvar = move[0, 2]
+            for thing in text:
+              tempindex2 += 1
+              if thing == move:
+                tempindex = tempindex2
+                tempvar = piece[tempindex2 - 1]
+          print(square + " " + tempvar + moves[2], end = " ")
+        '''
+      aimovepiece(board, storeboard, whitemove, whitecolor, blackcolor, turnnum, aiturn)
     else:
         try:
             if usermove[2] == ' ':
@@ -152,6 +192,9 @@ def len5(usermove, board, storeboard, whitemove, whitecolor, blackcolor, turnnum
         except Exception as e:
             print("Please enter a valid move.")
             print(e)
+        savefile = open("savereplay.txt", "a")
+        savefile.write(usermove)
+        savefile.close()
         aimovepiece(board, storeboard, whitemove, whitecolor, blackcolor, turnnum + 1, aiturn)
 
 def ailen5(usermove, board, storeboard, whitemove, whitecolor, blackcolor, turnnum, aicolor):
@@ -180,12 +223,16 @@ def ailen5(usermove, board, storeboard, whitemove, whitecolor, blackcolor, turnn
                 else:
                     whitemove = "W"
                     whitepersp(whitecolor, blackcolor, board)
+                print(usermove)
                 storeboard = storeboardset(board, whitemove, 1)
             else:
                 print("Please enter a valid move.")
     except Exception as e:
         print("Please enter a valid move.")
         print(e)
+    savefile = open("savereplay.txt", "a")
+    savefile.write(usermove)
+    savefile.close()
     aimovepiece(board, storeboard, whitemove, whitecolor, blackcolor, turnnum + 1, False)
 
 def storeboardset(board, whitemove, setting):
@@ -311,7 +358,7 @@ def primaryai(board, storeboard, whitemove, whitecolor, blackcolor, turnnum):
     # Values for each piece, to be used for evaluating
     piecevalues = {"P" : 1, "B" : 3, "N" : 3, "R" : 5, "Q" : 9, "K" : 5}
     # Dictionary of turns to piecevalues (protecting pieces, controlling center, taking pieces)
-    scoremult = {30:[2, 1, 4], 20:[3, 1, 3], 10:[2.5, 1.5, 3], 0:[1, 2, 1.5]}
+    scoremult = {30:[2, 1, 4], 20:[3, 1, 3], 10:[2.5, 1.5, 3], 0:[1.5, 2, 1]}
     # Dictionary of evaluated moves score
     movescoredict = {}
     # Variable for the accumulated score of moves
@@ -490,6 +537,6 @@ def primaryai(board, storeboard, whitemove, whitecolor, blackcolor, turnnum):
             # print("Changed to " + str(score))
     bestmove = bestmoves[random.randrange(0,difficulty)]
     # print(bestmove)
-    # print(bestmove[0] + "  BESTMOVE!!!!!!!!!")
+    print(bestmove[0] + "  BESTMOVE!!!!!!!!!")
     return bestmove[0]
 

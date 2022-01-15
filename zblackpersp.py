@@ -69,8 +69,7 @@ def blackpersp(whitecolor, blackcolor, board):
 
         if x % 8 == 0:
             if (yaxis) % 2 == 0:
-                print(u"\u001B[107m", testvar2, u"\u001B[0m" + " ", str(round(
-                    x / 8)))  # color switch white, space, testvar2, space, color switch black, space, space, row, enter
+                print(u"\u001B[107m", testvar2, u"\u001B[0m" + " ", str(round(x / 8)))  # color switch white, space, testvar2, space, color switch black, space, space, row, enter
             else:
                 print(testvar2 + u"\u001B[0m", " ", str(round(x / 8)))  # testvar2, space, space, row, enter
             if x != 64:
